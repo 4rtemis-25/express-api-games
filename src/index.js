@@ -7,7 +7,7 @@ const app = express()
 
 app.use(express.json())
 
-app.use(gamesRoutes)
+app.use('/api/v1', gamesRoutes)
 app.use(indexRoutes)
 
 app.listen(3000)

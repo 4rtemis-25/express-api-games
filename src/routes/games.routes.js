@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { deleteGames, createGames, getGames, updateGames } from "../controllers/games.controller.js";
+import { deleteGames, createGames, getGames, updateGames, getGamesById } from "../controllers/games.controller.js";
 
 const router = Router()
 
 router.get('/games', getGames)
 
-router.post('/games', createGames)
+router.get('/gamesById/:id', getGamesById)
 
 router.put('/games', updateGames)
 

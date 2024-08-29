@@ -10,3 +10,8 @@ CREATE TABLE games (
 );
 
 DESCRIBE games;
+
+INSERT INTO games VALUES
+(1, 'TLOU', 60),
+(2, 'RDR2', 60),
+(3, 'GOW', 60),
