@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS games_db;
+
+USE games_db;
+
+CREATE TABLE games (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(45) NOT NULL,
+    price INT NOT NULL,
+    PRIMARY KEY(id)
+);
+
+DESCRIBE games;
