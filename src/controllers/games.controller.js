@@ -24,6 +24,31 @@ export const getGamesById = async (req, res) => {
     res.json(rows[0])
 }
 
-export const updateGames = (req, res) => res.send ('PUT GAMES')
+export const updateGames = async (req, res) => {
+    const { id } = req.params
+    const { name, price } = req.body
 
-export const deleteGames = (req, res) => res.send ('DELETE GAMES')
+    const [result] = await pool.query('UPDATE games SET name = IFNULL(?, name), price = IFNULL(?, price) WHERE id = ?', [name, price, id]) 
+    
+    console.log(result);
+    
+
+    if(result.affectedRows === 0) return res.status(404).json({
+        message: 'Game not found'
+    })
+
+    const [rows] = await pool.query('SELECT * FROM games WHERE id = ?', [id])
+
+    res.json(rows[0])
+    
+} 
+
+export const deleteGames = async (req, res) => {
+    const result = await pool.query('DELETE FROM games WHERE id = ?', [req.params.id])
+
+    if(result.affectedRows <= 0) return res.status(404).json({
+        message: 'Game not found'
+    })
+
+    res.sendStatus(204)
+}

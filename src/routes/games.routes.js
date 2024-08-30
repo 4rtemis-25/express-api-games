@@ -5,10 +5,12 @@ const router = Router()
 
 router.get('/games', getGames)
 
+router.post('/games', createGames)
+
 router.get('/gamesById/:id', getGamesById)
 
-router.put('/games', updateGames)
+router.patch('/games/:id', updateGames)
 
-router.delete('/games', deleteGames)
+router.delete('/games/:id', deleteGames)
 
 export default router
